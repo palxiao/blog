@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>归档 | 我的异世界</title><meta name="description" content="少壮不努力，老大写程序"><meta name="keywords" content="JavaScript,前端,技术,web,代码,编程,前端博客,杂谈,摄影,音乐,游戏,动漫"><meta name="author" content="ShawnPhang,shawnphang@163.com"><meta name="copyright" content="ShawnPhang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://blog.palxp.com/archives/2018/08/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="归档"><meta property="og:url" content="http://blog.palxp.com/archives/2018/08/"><meta property="og:site_name" content="我的异世界"><meta property="og:description" content="少壮不努力，老大写程序"><meta property="og:image" content="http://img.palxp.com/blog/head.jpg"><meta property="article:published_time" content="2021-07-10T13:04:09.873Z"><meta property="article:modified_time" content="2021-07-10T13:04:09.873Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = '1'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2021-07-10 21:04:09'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="http://img.palxp.com/blog/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives//"><div class="headline">文章</div><div class="length_num">37</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags//"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories//"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div></div></div><div id="body-wrap"><header class="not-index-bg" id="page-header" style="background-image: url(http://img.palxp.com/Cover/2020/09/1599806451967.jpeg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">我的异世界</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="page_site-info"><h1 id="site_title">归档</h1></div></header><main class="layout_page" id="content-inner"><div id="archive"><div class="article-sort-title">文章总览 - 37</div><div class="article-sort"><div class="article-sort-item year">2018</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2018/08/04/old/javascript-study/" title="前端三剑客各种知识点梳理汇总 2"><img data-lazy-src="http://img.palxp.com/default/tech2.jpeg" alt="前端三剑客各种知识点梳理汇总 2" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2018-08-03T23:30:27.000Z" title="发表于 2018-08-04 07:30:27">2018-08-04</time></div><a class="article-sort-item-title" href="/2018/08/04/old/javascript-study/" title="前端三剑客各种知识点梳理汇总 2">前端三剑客各种知识点梳理汇总 2</a></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="http://img.palxp.com/blog/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ShawnPhang</div><div class="author-info__description">少壮不努力，老大写程序</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">37</div></a></div><div class="card-info-data-item is-center">      <a href="/tags/"><div class="headline">标签</div><div class="length_num">9</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palxiao"><i class="fab fa-github"></i><span>Github</span></a></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/13/2021/vue2%E9%80%9A%E4%BF%A1/" title="浅谈vue2的12种组件通信方式及理解">浅谈vue2的12种组件通信方式及理解</a><time class="aside-post_meta post-meta-date" datetime="2021-04-12T17:13:43.000Z" title="发表于 2021-04-13 01:13:43">2021-04-13</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/12/2021/%E6%8E%A2%E7%B4%A2%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E4%B9%8BProxy%E4%BB%A3%E7%90%86%E4%B8%8Ereflect%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="探索响应式数据原理，Proxy与reflect">探索响应式数据原理，Proxy与reflect</a><time class="aside-post_meta post-meta-date" datetime="2021-04-11T18:40:23.000Z" title="发表于 2021-04-12 02:40:23">2021-04-12</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAVuex%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%99%A8/" title="从零开始实现一个Vuex状态管理器">从零开始实现一个Vuex状态管理器</a><time class="aside-post_meta post-meta-date" datetime="2021-04-11T18:40:01.000Z" title="发表于 2021-04-12 02:40:01">2021-04-12</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%9F%BA%E4%BA%8EReact%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93-%E5%90%8C%E6%9E%84/" title="从零开始基于React服务端渲染&amp;同构">从零开始基于React服务端渲染&amp;同构</a><time class="aside-post_meta post-meta-date" datetime="2021-04-11T18:39:26.000Z" title="发表于 2021-04-12 02:39:26">2021-04-12</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/04/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-Promise%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/" title="40行代码实现一个简单Promise函数">40行代码实现一个简单Promise函数</a><time class="aside-post_meta post-meta-date" datetime="2021-04-04T10:58:08.000Z" title="发表于 2021-04-04 18:58:08">2021-04-04</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">前端开发</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%82%E8%B0%88/"><span class="card-category-list-name">杂谈</span><span class="card-category-list-count">1</span></a></li>
+                       
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href='/tags/ElasticSearch/' style='font-size:16px; color:rgb(135, 187, 73)'>ElasticSearch</a><a href='/tags/JS/' style='font-size:16px; color:rgb(39, 90, 29)'>JS</a><a href='/tags/Linux/' style='font-size:19px; color:rgb(176, 50, 141)'>Linux</a><a href='/tags/NodeJs/' style='font-size:21px; color:rgb(0, 1, 47)'>NodeJs</a><a href='/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/' style='font-size:21px; color:rgb(153, 9, 162)'>个人博客</a><a href='/tags/%E5%89%8D%E7%AB%AF/' style='font-size:21px; color:rgb(183, 88, 58)'>前端</a><a href='/tags/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA/' style='font-size:18px; color:rgb(197, 93, 45)'>前端巩固</a><a href='/tags/%E5%A4%87%E5%BF%98%E8%AE%B0%E5%BD%95/' style='font-size:21px; color:rgb(40, 97, 50)'>备忘记录</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/' style='font-size:18px; color:rgb(139, 24, 167)'>数据分析</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/09/"><span class="card-archive-list-date">九月 2019</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">37</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" publish_date="2017/12/04 15:28:42">     </div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By ShawnPhang</div><div class="icp"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"/><span>粤ICP备16076249号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks"></canvas><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="170" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script></div><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"https://cdn.jsdelivr.net/npm/live2d-widget-model-bilibili@1.0.1/assets/33/model.2017.valley.json"},"display":{"position":"right","width":162,"height":164,"vOffset":18},"mobile":{"show":true},"react":{"opacity":0.78},"log":false});</script></body></html>

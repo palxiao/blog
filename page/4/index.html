@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的异世界 - 不为谁而写的码</title><meta name="description" content="少壮不努力，老大写程序"><meta name="keywords" content="JavaScript,前端,技术,web,代码,编程,前端博客,杂谈,摄影,音乐,游戏,动漫"><meta name="author" content="ShawnPhang,shawnphang@163.com"><meta name="copyright" content="ShawnPhang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://blog.palxp.com/page/4/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="我的异世界"><meta property="og:url" content="http://blog.palxp.com/page/4/"><meta property="og:site_name" content="我的异世界"><meta property="og:description" content="少壮不努力，老大写程序"><meta property="og:image" content="http://img.palxp.com/blog/head.jpg"><meta property="article:published_time" content="2021-07-10T13:04:14.345Z"><meta property="article:modified_time" content="2021-07-10T13:04:14.345Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = '1'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2021-07-10 21:04:14'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="http://img.palxp.com/blog/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives//"><div class="headline">文章</div><div class="length_num">37</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags//"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories//"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(http://img.palxp.com/Cover/2020/09/1599806451967.jpeg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">我的异世界</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">我的异世界</h1><div id="site_subtitle"><span id="subtitle"></span></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2018/01/16/old/logstash-input-jdbc%E5%AE%9E%E7%8E%B0%E4%B8%8Emysql%E8%A7%A3%E8%80%A6%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E5%88%B0ES/" title="Logstash-input-jdbc实现与MySql解耦同步数据到ES">     <img class="post_bg" data-lazy-src="http://img.palxp.com/blog/mydeskbyes.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Logstash-input-jdbc实现与MySql解耦同步数据到ES"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/01/16/old/logstash-input-jdbc%E5%AE%9E%E7%8E%B0%E4%B8%8Emysql%E8%A7%A3%E8%80%A6%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E5%88%B0ES/" title="Logstash-input-jdbc实现与MySql解耦同步数据到ES">Logstash-input-jdbc实现与MySql解耦同步数据到ES</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-01-16T09:06:12.000Z" title="发表于 2018-01-16 17:06:12">2018-01-16</time></span></div><div class="content">随着业务数据的增长，Mysql压力增大，单表储存会严重影响读写的高效性，为解决这一问题，分表分库和历史数据迁移等解决方案就应运而生了，但在某些场景下这些解决方案还是存在问题，例如聚合查询等。而ElasticSearch作为实时的分布式搜索和分析引擎，能够快速查询和处理海量数据，高可用可扩展，通过ES，可以轻松做到保证查询效率的聚合查询，已有不少大型互联网企业成功使用案例，是值得一试的技术。
+
+
+经过调研，实现与Mysql同步工具基本有以下几种：
+
+logstash-input-jdbc：官方推荐的插件，Ruby编写的
+go-mysql-elastic：Go编写，国内作者
+python-mysql-replication: Python编写
+elasticsearch-jdbc：Java编写
+elasticsearch-river-mysql：听说已经很少维护
+
+0. 安装 ElasticSearch参考 上一篇文章 此处不做详述。
+1. 下载 Logstash官网链接： Download Logstash  以6.1.1版本为例：
+wget https://artifacts.elas ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2018/01/16/old/%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8EElasticSearch%E5%85%A5%E9%97%A8%E5%B0%8F%E8%AE%B0/" title="分布式搜索引擎ElasticSearch安装小记">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech4.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分布式搜索引擎ElasticSearch安装小记"></a></div><div class="recent-post-info"><a class="article-title" href="/2018/01/16/old/%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8EElasticSearch%E5%85%A5%E9%97%A8%E5%B0%8F%E8%AE%B0/" title="分布式搜索引擎ElasticSearch安装小记">分布式搜索引擎ElasticSearch安装小记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2018-01-16T02:40:37.000Z" title="发表于 2018-01-16 10:40:37">2018-01-16</time></span></div><div class="content">
+ElasticSearch（下面简称ES）是一个开源的、基于Apache Lucene的、分布式的实时分析搜索引擎。其设计理念就是可以从不用的数据源获取数据，进行实时的检索和分析。
+
+利用ES可以减少数据库压力和数据复杂度，不用在原表大量添加索引，且可以使用廉价机器平行扩展性能，具有轻量高效的特点。
+
+
+0. Java安装及环境变量配置
+ElasticSearch基于Lucene封装了一套REST API，Lucene是Java开源库，所以需要在服务器(或本地)配置好Java环境，所需版本是jdk1.8以上。
+
+java -version 
+echo $JAVA_HOME
+1. 下载安装Elasticsearch官方下载地址及安装方法：Download  Elasticsearch
+以6.1.1版本为例：
+$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.1.1.zip
+$ unzip elasticsearch-6.1.1.zip
+$ cd elasticsearch-6.1.1/ ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2017/12/28/old/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" title="Git实用操作整理记录">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech6.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Git实用操作整理记录"></a></div><div class="recent-post-info"><a class="article-title" href="/2017/12/28/old/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%95%B4%E7%90%86/" title="Git实用操作整理记录">Git实用操作整理记录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2017-12-28T03:05:22.000Z" title="发表于 2017-12-28 11:05:22">2017-12-28</time></span></div><div class="content">记录某些可能不常用会忘记但实用的操作
+
+
+0. 为当前版本打上 taggit tag -a v1.0 -m &#39;version 1.0 code&#39;
+1. 查看所有 taggit tag
+2. 推送到远程仓库git push origin --tags
+2.1 重新修改 commit 备注git commit --amend -m &quot;新的提交信息&quot;
+3. 删除远程分支和 tag
+在 Git v1.7.0 之后，可以使用这种语法删除远程分支：
+
+git push origin --delete &lt;branchName&gt;
+
+删除 tag 这么用：
+
+git push origin --delete tag &lt;tagname&gt;
+
+否则，可以使用这种语法，推送一个空分支到远程分支，其实就相当于删除远程分支：
+
+git push origin :&lt;branchName&gt;
+
+推送一个空 tag 到远程 tag：
+
+git tag -d &lt;tagname&gt;
+git push origin :refs/tags/&lt;t ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2017/12/25/old/vue%E7%AC%94%E8%AE%B0/" title="vue相关笔记及思考">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech4.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue相关笔记及思考"></a></div><div class="recent-post-info"><a class="article-title" href="/2017/12/25/old/vue%E7%AC%94%E8%AE%B0/" title="vue相关笔记及思考">vue相关笔记及思考</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2017-12-25T09:56:35.000Z" title="发表于 2017-12-25 17:56:35">2017-12-25</time></span></div><div class="content">记录vue2.0开发过程中个人认为需要注意的东西。
+
+
+
+
+事件：v-on:click/mouseover 推荐写法： @click=&quot;&quot;
+
+属性：v-bind:src=”” 推荐写法： :src=&quot;&quot;
+
+&lt;img src=&quot;&#123;&#123;url&#125;&#125;&quot; alt=&quot;&quot;&gt;    效果能出来，但是会报一个404错误
+
+&lt;img v-bind:src=&quot;url&quot; alt=&quot;&quot;&gt;    效果可以出来，不会发404错误
+
+补充中…
+
+
+
+随手解决了但原理还未完全搞懂的奇怪问题：
+
+
+如此绑定图片不使用require会报404：:src=&quot;userInfo.avater||require(&#39;../../assets/images/default-avater.png&#39;)&quot; 
+
+vue响应式原理是基于es5的Object.defineProperty实现的
+关于模板:&#123; &#123;  ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2017/12/11/old/Mac%E4%B8%AD%E6%88%AA%E5%9B%BE%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E6%88%AA%E5%9B%BE%E5%90%8D%E7%A7%B0%E9%85%8D%E7%BD%AE/" title="Mac中截图快捷键及截图名称配置">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech6.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mac中截图快捷键及截图名称配置"></a></div><div class="recent-post-info"><a class="article-title" href="/2017/12/11/old/Mac%E4%B8%AD%E6%88%AA%E5%9B%BE%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%8F%8A%E6%88%AA%E5%9B%BE%E5%90%8D%E7%A7%B0%E9%85%8D%E7%BD%AE/" title="Mac中截图快捷键及截图名称配置">Mac中截图快捷键及截图名称配置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2017-12-11T06:57:27.000Z" title="发表于 2017-12-11 14:57:27">2017-12-11</time></span></div><div class="content">Command + Shift + 3 截取全屏
+Command + Shift + 4 鼠标变成十字，点击选取屏幕区域截图
+截图完成自动保存在桌面，文件名比较长，而且带有中文，此时可以自定义截图后保存的名称：
+
+
+打开“终端”，粘贴以下文本并回车：
+
+defaults write com.apple.screencapture name “Snapshot”
+
+
+这里的Snapshot就是代替“屏幕截图”几个字的文本，可以更改。
+
+同样的再执行以下文本以让配置生效：
+
+killall SystemUIServer
+
+打开“系统偏好设置”，选择“语言与地区”，点击窗口右下“高级..”，切换上面tab至“时间”，将“正午前”跟“正午后”的中文定义修改为“AM”、“PM”。
+之后保存在桌面的屏幕截图名称就为全英文了。
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2017/12/05/old/%E7%AA%81%E7%A0%B4%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%B8%8B%E8%BD%BD%E9%99%90%E9%80%9F/" title="突破百度网盘下载限速">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech5.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="突破百度网盘下载限速"></a></div><div class="recent-post-info"><a class="article-title" href="/2017/12/05/old/%E7%AA%81%E7%A0%B4%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E4%B8%8B%E8%BD%BD%E9%99%90%E9%80%9F/" title="突破百度网盘下载限速">突破百度网盘下载限速</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2017-12-05T03:42:30.000Z" title="发表于 2017-12-05 11:42:30">2017-12-05</time></span></div><div class="content">更新：网盘下载器链接
+Windows下可以使用无限试用版百度网盘客户端来突破限速，网上搜一下就有，其原理是延长客户端会员试用计时，这样就相当于一直拥有会员下载加速了。
+Mac端使用谷歌浏览器来突破限制，简单两步。
+
+
+1. 下载解压安装 Aria2GUI for MAC OS X 以后每次下载网盘资源的时候需要先打开这个Aria2GUI客户端。
+2. 下载谷歌浏览器网盘插件 BaiduExporter将**crx**后缀的文件拖到谷歌扩展程序界面安装并启用。
+
+在网盘页面导出下载中会多出ARIA2 RPC的选项(可能需要重启浏览器)，选择要下载的文件点击该选项即可满速下载。
+
+建议将分享资源先保存至自己的网盘再调用下载。
+
+遇到谷歌扩展程序失效停用参考：
+
+
+
+将非官方扩展程序加入chrome的白名单
+参考资料
+
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2017/12/04/old/Github-pages-hexo-%E6%89%93%E9%80%A0%E5%85%8D%E8%B4%B9%E4%BC%98%E9%9B%85%E7%9A%84%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/" title="Github pages + hexo 优雅地打造免费个人静态网页博客">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech7.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Github pages + hexo 优雅地打造免费个人静态网页博客"></a></div><div class="recent-post-info"><a class="article-title" href="/2017/12/04/old/Github-pages-hexo-%E6%89%93%E9%80%A0%E5%85%8D%E8%B4%B9%E4%BC%98%E9%9B%85%E7%9A%84%E4%B8%AA%E4%BA%BA%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E5%8D%9A%E5%AE%A2/" title="Github pages + hexo 优雅地打造免费个人静态网页博客">Github pages + hexo 优雅地打造免费个人静态网页博客</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2017-12-04T07:28:42.000Z" title="发表于 2017-12-04 15:28:42">2017-12-04</time></span></div><div class="content">
+前言：近期觉得写博客这件事必须提到日程了，一方面养成做笔记做总结的习惯，同时也能做些生活记录，提高写作能力，其实有很多不错的博客平台都可以用，自然曝光率可能也比较高，但是咱好歹也是程序员，博客网站不自己搭建一个感觉就有点没逼格，但这样至少需要域名空间和博客程序，对于写博客这个出发点似乎成本有点高。
+
+后来发现很多大牛的个人博客都在用hexo，折腾了一下觉得简单又实用，markdown编写git发布，静态网页速度快，稳定性高，还利于搜索引擎收录，对于博客程序来说这一切足够了。听说还可以集成vue、angular等。
+
+
+1. 准备工作
+必要环境及工具的下载：
+
+
+Node.js 安装后也会安装好 npm 包管理工具。
+Git 用于提交代码的工具，mac下安装了xcode则忽略这步。
+需要一个Github账号，使用它提供的 Pages 功能就可以拥有一个静态网站空间，而且是免费的。国内的 Coding 也能做到同样的事，这里我还是选择github作为例子，原理都一样按需选择。
+
+
+申请个自己的域名(非必须)
+
+2. 安装HEXO博客程序
+mac下打开终端，如果嫌cd命令找目录麻烦，可以打 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="http://img.palxp.com/blog/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ShawnPhang</div><div class="author-info__description">少壮不努力，老大写程序</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">37</div></a></div><div class="card-info-data-item is-center">      <a href="/tags/"><div class="headline">标签</div><div class="length_num">9</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palxiao"><i class="fab fa-github"></i><span>Github</span></a></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/13/2021/vue2%E9%80%9A%E4%BF%A1/" title="浅谈vue2的12种组件通信方式及理解">浅谈vue2的12种组件通信方式及理解</a><time class="aside-post_meta post-meta-date" datetime="2021-04-12T17:13:43.000Z" title="发表于 2021-04-13 01:13:43">2021-04-13</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/12/2021/%E6%8E%A2%E7%B4%A2%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E4%B9%8BProxy%E4%BB%A3%E7%90%86%E4%B8%8Ereflect%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="探索响应式数据原理，Proxy与reflect">探索响应式数据原理，Proxy与reflect</a><time class="aside-post_meta post-meta-date" datetime="2021-04-11T18:40:23.000Z" title="发表于 2021-04-12 02:40:23">2021-04-12</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAVuex%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%99%A8/" title="从零开始实现一个Vuex状态管理器">从零开始实现一个Vuex状态管理器</a><time class="aside-post_meta post-meta-date" datetime="2021-04-11T18:40:01.000Z" title="发表于 2021-04-12 02:40:01">2021-04-12</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%9F%BA%E4%BA%8EReact%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93-%E5%90%8C%E6%9E%84/" title="从零开始基于React服务端渲染&amp;同构">从零开始基于React服务端渲染&amp;同构</a><time class="aside-post_meta post-meta-date" datetime="2021-04-11T18:39:26.000Z" title="发表于 2021-04-12 02:39:26">2021-04-12</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/04/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-Promise%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/" title="40行代码实现一个简单Promise函数">40行代码实现一个简单Promise函数</a><time class="aside-post_meta post-meta-date" datetime="2021-04-04T10:58:08.000Z" title="发表于 2021-04-04 18:58:08">2021-04-04</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">前端开发</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%82%E8%B0%88/"><span class="card-category-list-name">杂谈</span><span class="card-category-list-count">1</span></a></li>
+                       
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href='/tags/ElasticSearch/' style='font-size:16px; color:rgb(135, 187, 73)'>ElasticSearch</a><a href='/tags/JS/' style='font-size:16px; color:rgb(39, 90, 29)'>JS</a><a href='/tags/Linux/' style='font-size:19px; color:rgb(176, 50, 141)'>Linux</a><a href='/tags/NodeJs/' style='font-size:21px; color:rgb(0, 1, 47)'>NodeJs</a><a href='/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/' style='font-size:21px; color:rgb(153, 9, 162)'>个人博客</a><a href='/tags/%E5%89%8D%E7%AB%AF/' style='font-size:21px; color:rgb(183, 88, 58)'>前端</a><a href='/tags/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA/' style='font-size:18px; color:rgb(197, 93, 45)'>前端巩固</a><a href='/tags/%E5%A4%87%E5%BF%98%E8%AE%B0%E5%BD%95/' style='font-size:21px; color:rgb(40, 97, 50)'>备忘记录</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/' style='font-size:18px; color:rgb(139, 24, 167)'>数据分析</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/09/"><span class="card-archive-list-date">九月 2019</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">37</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" publish_date="2017/12/04 15:28:42">     </div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By ShawnPhang</div><div class="icp"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"/><span>粤ICP备16076249号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function subtitleType () {
+  $.getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js',function () {
+    jinrishici.load(function (result) {
+      if (true) {
+        var sub = "少壮不努力，老大写程序,牛羊且成群，猛兽皆独行,前半生不要怕，后半生不要悔,与其讨论勇气，不如直面恐惧".length == 0 ? new Array() : "少壮不努力，老大写程序,牛羊且成群，猛兽皆独行,前半生不要怕，后半生不要悔,与其讨论勇气，不如直面恐惧".split(',')
+        var content = result.data.content
+        var both = sub.unshift(content)
+        var typed = new Typed('#subtitle', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('subtitle').innerHTML = result.data.content
+      }
+    })
+  })
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks"></canvas><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="170" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script></div><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"https://cdn.jsdelivr.net/npm/live2d-widget-model-bilibili@1.0.1/assets/33/model.2017.valley.json"},"display":{"position":"right","width":162,"height":164,"vOffset":18},"mobile":{"show":true},"react":{"opacity":0.78},"log":false});</script></body></html>

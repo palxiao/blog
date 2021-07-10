@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>前端三剑客各种知识点梳理汇总 2 | 我的异世界</title><meta name="description" content="JS 相关补充   JavaScript 由以下三部分组成： ECMAScript（核心）：JavaScript 语言基础 DOM（文档对象模型）：规定了访问HTML和XML的接口 BOM（浏览器对象模型）：提供了浏览器窗口之间进行交互的对象和方法  JS内置对象 数据封装类对象：Object、Array、Boolean、Number、String 其他对象：Function、Arguments、"><meta name="keywords" content="前端"><meta name="author" content="ShawnPhang,shawnphang@163.com"><meta name="copyright" content="ShawnPhang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://blog.palxp.com/2018/08/04/old/javascript-study/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="前端三剑客各种知识点梳理汇总 2"><meta property="og:url" content="http://blog.palxp.com/2018/08/04/old/javascript-study/"><meta property="og:site_name" content="我的异世界"><meta property="og:description" content="JS 相关补充   JavaScript 由以下三部分组成： ECMAScript（核心）：JavaScript 语言基础 DOM（文档对象模型）：规定了访问HTML和XML的接口 BOM（浏览器对象模型）：提供了浏览器窗口之间进行交互的对象和方法  JS内置对象 数据封装类对象：Object、Array、Boolean、Number、String 其他对象：Function、Arguments、"><meta property="og:image" content="http://img.palxp.com/default/tech2.jpeg"><meta property="article:published_time" content="2018-08-03T23:30:27.000Z"><meta property="article:modified_time" content="2021-03-30T08:19:13.879Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = '1'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 16:19:13'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="http://img.palxp.com/blog/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives//"><div class="headline">文章</div><div class="length_num">37</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags//"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories//"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#JavaScript-%E7%94%B1%E4%BB%A5%E4%B8%8B%E4%B8%89%E9%83%A8%E5%88%86%E7%BB%84%E6%88%90%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">JavaScript 由以下三部分组成：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JS%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">JS内置对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E8%A7%84%E8%8C%83"><span class="toc-number">3.</span> <span class="toc-text">一些规范</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E7%BC%96%E5%86%99%E6%B3%A8%E6%84%8F"><span class="toc-number">4.</span> <span class="toc-text">高性能编写注意</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E5%8C%96%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81"><span class="toc-number">5.</span> <span class="toc-text">最小化重绘和回流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87"><span class="toc-number">6.</span> <span class="toc-text">变量提升</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="toc-number">7.</span> <span class="toc-text">原型原型链</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#this%E5%AF%B9%E8%B1%A1"><span class="toc-number">8.</span> <span class="toc-text">this对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DOM%E7%9A%84%E5%8F%91%E5%B1%95"><span class="toc-number">9.</span> <span class="toc-text">DOM的发展</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98-%E4%BB%A3%E7%90%86"><span class="toc-number">10.</span> <span class="toc-text">事件委托&#x2F;代理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#new%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">11.</span> <span class="toc-text">new操作符做了什么</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%EF%BC%88closure%EF%BC%89"><span class="toc-number">12.</span> <span class="toc-text">闭包（closure）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">13.</span> <span class="toc-text">闭包的特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="toc-number">14.</span> <span class="toc-text">内存泄漏</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Array-slice"><span class="toc-number">15.</span> <span class="toc-text">Array.slice()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Array-splice"><span class="toc-number">16.</span> <span class="toc-text">Array.splice()</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(http://img.palxp.com/default/tech2.jpeg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">我的异世界</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">前端三剑客各种知识点梳理汇总 2</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2018-08-03T23:30:27.000Z" title="undefined 2018-08-04 07:30:27">2018-08-04</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>JS 相关补充</p>
+<a id="more"></a>
+
+<h5 id="JavaScript-由以下三部分组成："><a href="#JavaScript-由以下三部分组成：" class="headerlink" title="JavaScript 由以下三部分组成："></a>JavaScript 由以下三部分组成：</h5><ul>
+<li>ECMAScript（核心）：JavaScript 语言基础</li>
+<li>DOM（文档对象模型）：规定了访问HTML和XML的接口</li>
+<li>BOM（浏览器对象模型）：提供了浏览器窗口之间进行交互的对象和方法</li>
+</ul>
+<h5 id="JS内置对象"><a href="#JS内置对象" class="headerlink" title="JS内置对象"></a>JS内置对象</h5><ul>
+<li>数据封装类对象：Object、Array、Boolean、Number、String</li>
+<li>其他对象：Function、Arguments、Math、Date、RegExp、Error</li>
+<li>ES6新增对象：Symbol、Map、Set、Promises、Proxy、Reflect</li>
+</ul>
+<h5 id="一些规范"><a href="#一些规范" class="headerlink" title="一些规范"></a>一些规范</h5><ul>
+<li>代码段使用花括号{}包裹</li>
+<li>变量和函数在使用前进行声明</li>
+<li>以大写字母开头命名构造函数，全大写命名常量</li>
+<li>规范定义JSON对象，补全双引号</li>
+<li>用{}和[]声明对象和数组</li>
+</ul>
+<h5 id="高性能编写注意"><a href="#高性能编写注意" class="headerlink" title="高性能编写注意"></a>高性能编写注意</h5><ul>
+<li>遵循严格模式：”use strict”;</li>
+<li>将js脚本放在页面底部，加快渲染页面</li>
+<li>将js脚本将脚本成组打包，减少请求</li>
+<li>使用非阻塞方式下载js脚本</li>
+<li>尽量使用局部变量来保存全局变量</li>
+<li>尽量减少使用闭包</li>
+<li>使用 window 对象属性方法时，省略 window</li>
+<li>尽量减少对象成员嵌套</li>
+<li>缓存 DOM 节点的访问</li>
+<li>通过避免使用 eval() 和 Function() 构造器</li>
+<li>给 setTimeout() 和 setInterval() 传递函数而不是字符串作为参数</li>
+<li>尽量使用直接量创建对象和数组</li>
+<li>最小化重绘(repaint)和回流(reflow)</li>
+</ul>
+<h5 id="最小化重绘和回流"><a href="#最小化重绘和回流" class="headerlink" title="最小化重绘和回流"></a>最小化重绘和回流</h5><ul>
+<li>需要要对元素进行复杂的操作时，可以先隐藏(display:”none”)，操作完成后再显示</li>
+<li>需要创建多个DOM节点时，使用DocumentFragment创建完后一次性的加入document</li>
+<li>缓存Layout属性值，如：var left = elem.offsetLeft; 这样，多次使用 left 只产生一次回流</li>
+<li>尽量避免用table布局（table元素一旦触发回流就会导致table里所有的其它元素回流）</li>
+<li>避免使用css表达式(expression)，因为每次调用都会重新计算值（包括加载页面）</li>
+<li>尽量使用 css 属性简写，如：用 border 代替 border-width, border-style, border-color</li>
+</ul>
+<h5 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h5><ul>
+<li>在JavaScript中，函数声明与变量声明经常被JavaScript引擎隐式地提升到当前作用域的顶部。</li>
+<li>声明语句中的赋值部分并不会被提升，只有名称被提升</li>
+<li>函数声明的优先级高于变量，如果变量名跟函数名相同且未赋值，则函数声明会覆盖变量声明</li>
+<li>如果函数有多个同名参数，那么最后一个参数（即使没有定义）会覆盖前面的同名参数</li>
+</ul>
+<h5 id="原型原型链"><a href="#原型原型链" class="headerlink" title="原型原型链"></a>原型原型链</h5><ul>
+<li>JavaScript的所有对象中都包含了一个 [proto] 内部属性</li>
+<li>当函数对象作为构造函数创建实例时，prototype 属性值将被作为实例对象的原型 [proto]</li>
+<li>当一个对象调用的属性/方法自身不存在时，就会去自己 [proto] 关联的前辈 prototype 对象上去找</li>
+<li>如果没找到，就会去该 prototype 原型 [proto] 关联的前辈 prototype 去找。依次类推，直到找到属性/方法或 undefined 为止。从而形成了所谓的“原型链”</li>
+<li>JavaScript对象是通过引用来传递的，当修改原型时，与之相关的对象也会继承这一改变（原型特点）</li>
+</ul>
+<h5 id="this对象"><a href="#this对象" class="headerlink" title="this对象"></a>this对象</h5><ul>
+<li>this 总是指向函数的直接调用者</li>
+<li>如果有 new 关键字，this 指向 new 出来的实例对象</li>
+<li>在事件中，this指向触发这个事件的对象</li>
+<li>IE下 attachEvent 中的this总是指向全局对象Window</li>
+</ul>
+<h5 id="DOM的发展"><a href="#DOM的发展" class="headerlink" title="DOM的发展"></a>DOM的发展</h5><ul>
+<li>DOM：文档对象模型（Document Object Model），定义了访问HTML和XML文档的标准，与编程语言及平台无关</li>
+<li>DOM0：提供了查询和操作Web文档的内容API。未形成标准，实现混乱。如：document.forms[‘login’]</li>
+<li>DOM1：W3C提出标准化的DOM，简化了对文档中任意部分的访问和操作。如：JavaScript中的Document对象</li>
+<li>DOM2：原来DOM基础上扩充了鼠标事件等细分模块，增加了对CSS的支持。如：getComputedStyle(elem, pseudo)</li>
+<li>DOM3：增加了XPath模块和加载与保存（Load and Save）模块。如：XPathEvaluator</li>
+</ul>
+<h5 id="事件委托-代理"><a href="#事件委托-代理" class="headerlink" title="事件委托/代理"></a>事件委托/代理</h5><ul>
+<li>是指将事件绑定目标元素的到父元素上，利用冒泡机制触发该事件</li>
+<li>优点：<br>  可以减少事件注册，节省大量内存占用；    可以将事件应用于动态添加的子元素上</li>
+<li>缺点：<br>  使用不当会造成事件在不应该触发时触发</li>
+</ul>
+<h5 id="new操作符做了什么"><a href="#new操作符做了什么" class="headerlink" title="new操作符做了什么"></a>new操作符做了什么</h5><ul>
+<li>创建实例对象，this 变量引用该对象，同时还继承了构造函数的原型</li>
+<li>属性和方法被加入到 this 引用的对象中</li>
+<li>新创建的对象由 this 所引用，并且最后隐式的返回 this</li>
+</ul>
+<h5 id="闭包（closure）"><a href="#闭包（closure）" class="headerlink" title="闭包（closure）"></a>闭包（closure）</h5><ul>
+<li>闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量,利用闭包可以突破作用链域</li>
+<li>使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内存，会增大内存使用量，使用不当很容易造成内存泄露。在js中，函数即闭包，只有函数才会产生作用域的概念</li>
+</ul>
+<h5 id="闭包的特性"><a href="#闭包的特性" class="headerlink" title="闭包的特性"></a>闭包的特性</h5><ul>
+<li>函数内再嵌套函数</li>
+<li>内部函数可以引用外层的参数和变量</li>
+<li>参数和变量不会被垃圾回收机制回收</li>
+</ul>
+<h5 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h5><ul>
+<li>内存泄漏指任何对象在您不再拥有或需要它之后仍然存在</li>
+<li>垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。如果一个对象的引用数量为 0（没有其他对象引用过该对象），或对该对象的惟一引用是循环的，那么该对象的内存即可回收</li>
+<li>setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏</li>
+<li>闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）</li>
+</ul>
+<h5 id="Array-slice"><a href="#Array-slice" class="headerlink" title="Array.slice()"></a>Array.slice()</h5><ul>
+<li>“读取”数组指定的元素，不会对原数组进行修改</li>
+<li>arr.slice(start, end)</li>
+</ul>
+<h5 id="Array-splice"><a href="#Array-splice" class="headerlink" title="Array.splice()"></a>Array.splice()</h5><ul>
+<li>“操作”数组指定的元素，会修改原数组，返回被删除的元素</li>
+<li>语法：arr.splice(index, count, [insert Elements])</li>
+<li>index 是操作的起始位置</li>
+<li>count = 0 插入元素，count &gt; 0 删除元素</li>
+<li>[insert Elements] 向数组新插入的元素</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:shawnphang@163.com">ShawnPhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.palxp.com/2018/08/04/old/javascript-study/">http://blog.palxp.com/2018/08/04/old/javascript-study/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.palxp.com" target="_blank">我的异世界</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="http://img.palxp.com/default/tech2.jpeg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018/12/16/old/%E5%85%B3%E4%BA%8EforEach%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%80%9D%E8%80%83%E4%B8%8E%E4%BC%98%E5%8C%96/"><img class="prev-cover" data-lazy-src="http://img.palxp.com/default/tech1.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">关于forEach循环的思考与优化</div></div></a></div><div class="next-post pull-right"><a href="/2018/07/08/old/see-javascript/"><img class="next-cover" data-lazy-src="http://img.palxp.com/jsHeat.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaScript波澜起伏的一生</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/11/29/2020/Jenkins自动化前后端项目部署/" title="Jenkins自动化前后端项目部署记录以及一些坑"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/2020/11/1606645225525.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="relatedPosts_title">Jenkins自动化前后端项目部署记录以及一些坑</div></div></a></div><div class="relatedPosts_item"><a href="/2020/04/01/2020/React学习笔记/" title="React学习笔记"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech2.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-04-01</div><div class="relatedPosts_title">React学习笔记</div></div></a></div><div class="relatedPosts_item"><a href="/2020/11/29/2020/与UI设计师对线的前端技巧，Gradient剪卡风格/" title="与UI对线的前端技巧之Gradient剪卡风格"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech2.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="relatedPosts_title">与UI对线的前端技巧之Gradient剪卡风格</div></div></a></div><div class="relatedPosts_item"><a href="/2020/12/04/2020/奇奇怪怪的JavaScript/" title="那些奇怪怪的JavaScript"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech1.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-04</div><div class="relatedPosts_title">那些奇怪怪的JavaScript</div></div></a></div><div class="relatedPosts_item"><a href="/2020/11/29/2020/总会用到的前端小姿势——CSS篇.md/" title="总会用到前端姿势-CSS篇"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech1.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="relatedPosts_title">总会用到前端姿势-CSS篇</div></div></a></div><div class="relatedPosts_item"><a href="/2021/04/13/2021/vue2通信/" title="浅谈vue2的12种组件通信方式及理解"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech9.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-13</div><div class="relatedPosts_title">浅谈vue2的12种组件通信方式及理解</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By ShawnPhang</div><div class="icp"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"/><span>粤ICP备16076249号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function loadUtterances () {
+  let ele = document.createElement('script')
+  ele.setAttribute('id', 'utterances_comment')
+  ele.setAttribute('src', 'https://utteranc.es/client.js')
+  ele.setAttribute('repo', 'palxiao/palxiao.github.io')
+  ele.setAttribute('issue-term', 'pathname')
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+  ele.setAttribute('theme', nowTheme)
+  ele.setAttribute('crossorigin', 'anonymous')
+  ele.setAttribute('async', 'true')
+  document.getElementById('utterances-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function utterancesTheme () {
+  if (document.querySelector('.utterances-frame')) {
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+    const message = {
+      type: 'set-theme',
+      theme: theme
+    };
+    const iframe = document.querySelector('.utterances-frame');
+    iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+}
+
+if ('Utterances' === 'Utterances' || !false) {
+  if (false) loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+  else loadUtterances()
+} else {
+  function loadOtherComment () {
+    loadUtterances()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks"></canvas><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="170" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script></div><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"https://cdn.jsdelivr.net/npm/live2d-widget-model-bilibili@1.0.1/assets/33/model.2017.valley.json"},"display":{"position":"right","width":162,"height":164,"vOffset":18},"mobile":{"show":true},"react":{"opacity":0.78},"log":false});</script></body></html>

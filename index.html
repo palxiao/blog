@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的异世界 - 不为谁而写的码</title><meta name="description" content="少壮不努力，老大写程序"><meta name="keywords" content="JavaScript,前端,技术,web,代码,编程,前端博客,杂谈,摄影,音乐,游戏,动漫"><meta name="author" content="ShawnPhang,shawnphang@163.com"><meta name="copyright" content="ShawnPhang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://blog.palxp.com/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="我的异世界"><meta property="og:url" content="http://blog.palxp.com/"><meta property="og:site_name" content="我的异世界"><meta property="og:description" content="少壮不努力，老大写程序"><meta property="og:image" content="http://img.palxp.com/blog/head.jpg"><meta property="article:published_time" content="2021-07-10T13:04:13.750Z"><meta property="article:modified_time" content="2021-07-10T13:04:13.750Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = '1'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2021-07-10 21:04:13'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="http://img.palxp.com/blog/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives//"><div class="headline">文章</div><div class="length_num">37</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags//"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories//"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(http://img.palxp.com/Cover/2020/09/1599806451967.jpeg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">我的异世界</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">我的异世界</h1><div id="site_subtitle"><span id="subtitle"></span></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/04/13/2021/vue2%E9%80%9A%E4%BF%A1/" title="浅谈vue2的12种组件通信方式及理解">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech9.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅谈vue2的12种组件通信方式及理解"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/13/2021/vue2%E9%80%9A%E4%BF%A1/" title="浅谈vue2的12种组件通信方式及理解">浅谈vue2的12种组件通信方式及理解</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-12T17:13:43.000Z" title="发表于 2021-04-13 01:13:43">2021-04-13</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">重新梳理了一下，个人认为Vue中组件通信思想与React一致，都是单向数据流，高阶流向低阶(父传子)，子组件只可通知父组件，此时数据还是在父级变更而不是发生流动。
+1. props
+高频使用
+
+父组件向子组件传递参数。 Vue文档: props
+2. $emit
+高频使用
+
+子组件通知父组件执行对应函数，可携带参数。 Vue文档: $emit
+3. $refs
+高频使用，也可用在DOM元素操作
+
+通信上属于父组件向子组件传递。通过给子组件设置ref属性，使用 this.$refs 对象来获取实例，即可直接访问及调用子组件上的属性和方法。 Vue文档: refs
+4. Vuex 状态管理器
+需注意场景使用，可以很好地满足复杂数据交互，在SPA应用中无障碍通信，但频繁使用会增加代码耦合度。
+
+主要以State、Getters、Mutations、Actions四个核心组成，约定了对数据的变更只在 Mutations 中，以 store.commit触发，异步操作则放在 Actions 中，以 store.dispatch 触发。 Vuex官网文档
+5. $root、$parent、$chi ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/04/12/2021/%E6%8E%A2%E7%B4%A2%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E4%B9%8BProxy%E4%BB%A3%E7%90%86%E4%B8%8Ereflect%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="探索响应式数据原理，Proxy与reflect">     <img class="post_bg" data-lazy-src="http://img.palxp.com/2021/04/1617552639769.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="探索响应式数据原理，Proxy与reflect"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/12/2021/%E6%8E%A2%E7%B4%A2%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E4%B9%8BProxy%E4%BB%A3%E7%90%86%E4%B8%8Ereflect%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="探索响应式数据原理，Proxy与reflect">探索响应式数据原理，Proxy与reflect</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-11T18:40:23.000Z" title="发表于 2021-04-12 02:40:23">2021-04-12</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">首先上一段代码：
+1234const obj = &#123; age: 1 &#125; // 定义一个对象let age = obj.age // 将对象的age属性赋值给一个变量obj.age++ // 对象的age属性发生了变化console.log(`age=$&#123;age&#125;`, obj); // 输出结果： age = 1  &#123;age: 2&#125;
+在obj的age属性变化时，变量age如果也随之变化，通常就需要定义一个函数赋予改变逻辑，在每次变化时手动执行一下函数。下面将以vue3中的响应式设计作为参考，来实现一个能自动响应方法。
+创建Demo在Vue3中，数据响应模块被独立拆分了出来，现在我们可以随意创建一个node项目，然后npm或yarn安装包@vue/reactivity，这个包中有两个关键函数，reactive 和 effect，分别是创建一个响应式的对象和数据发生改变时的监听方法：
+
+使用包引入的函数，修改了上面的例子，满足了响应式需求，外部定义的变量跟随对象一起改变，打印出两个数值一致：
+1234567891011121314c ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAVuex%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%99%A8/" title="从零开始实现一个Vuex状态管理器">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech7.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零开始实现一个Vuex状态管理器"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAVuex%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%99%A8/" title="从零开始实现一个Vuex状态管理器">从零开始实现一个Vuex状态管理器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-11T18:40:01.000Z" title="发表于 2021-04-12 02:40:01">2021-04-12</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">前言先vue-cli工具直接创建一个项目，勾选Vuex，其他随意：
+
+创建完毕自动安装依赖，之后启动项目，熟悉的helloworld ~ 简单写个demo运行看看，后面会逐步实现一个myVuex，来达到相同的期望运行结果：
+src/store/index.js ：
+123456789101112131415161718192021222324252627import Vue from &quot;vue&quot;;import Vuex from &quot;vuex&quot;;Vue.use(Vuex);export default new Vuex.Store(&#123;  state: &#123;    age: 7  &#125;,  getters: &#123; // 不用多说    getAge(state) &#123; return state.age &#125;  &#125;,  mutations: &#123; // vuex约定了对state的操作函数都放在这里，使用commit方法触发    changeAge(state, data) &#12 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%9F%BA%E4%BA%8EReact%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93-%E5%90%8C%E6%9E%84/" title="从零开始基于React服务端渲染&amp;同构">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech8.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零开始基于React服务端渲染&amp;同构"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%9F%BA%E4%BA%8EReact%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93-%E5%90%8C%E6%9E%84/" title="从零开始基于React服务端渲染&amp;同构">从零开始基于React服务端渲染&amp;同构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-11T18:39:26.000Z" title="发表于 2021-04-12 02:39:26">2021-04-12</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">1. 概念分析：服务端渲染（SSR）
+
+更好的⾸屏性能
+更利于 SEO，爬虫可以直接抓取已渲染的内容
+
+客户端渲染
+
+前后分离，⻚⾯的交互
+
+同构：服务端和客户端都可以运⾏的同⼀套代码
+
+同一套代码，复用率，可维护性增强
+同时具有SSR与前后端分离的优势，利于 SEO 优化
+更好的性能与更好的用户体验
+
+2. 架构思路及要点React提供了服务器渲染的各种API，可快速满足同构需求。同一份代码要在服务端与客户端各执行一次，首屏加载完服务端渲染的页面后，客户端紧接着继续执行并重新渲染页面，接管后续的页面交互。
+3. 同构关键点所谓同一份代码同时运行服务端和客户端，其实可复用的基本为组件，服务端与客户端的差异无法完全被抹平，而React的好处就是对服务端构建提供了不少解决方案。
+1. 路由不同客户端使用：&lt;BrowserRouter /&gt;    服务端使用：&lt;StaticRouter /&gt;
+2. 代码的同构
+接下来我们将尝试一步步从零开始实现一个React同构项目Demo。
+
+文章参考：https://imweb.io/topic/5d2da910b17a4bd24 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/04/04/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-Promise%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/" title="40行代码实现一个简单Promise函数">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech1.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="40行代码实现一个简单Promise函数"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/04/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-Promise%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/" title="40行代码实现一个简单Promise函数">40行代码实现一个简单Promise函数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-04T10:58:08.000Z" title="发表于 2021-04-04 18:58:08">2021-04-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">
+一个遵循PromiseA+规范的函数，解决异步回调地狱问题。
+
+Promise主要特点
+Promise 会有三种状态，「进⾏中」「已完成」和「已拒绝」，进⾏中状态可以更改为已完成或已拒绝，已经更改过状态后⽆法继续更改（例如从已完成改为已拒绝）。
+Promise 构造之后需要传⼊⼀个函数，它接受两个参数，执⾏第⼀个参数之后就会改变当前 promise 为「已完成」状态，执⾏ 第⼆个参数之后就会变为「已拒绝」状态。
+通过 .then ⽅法，即可在上⼀个 promise 达到已完成 时继续执⾏下⼀个函数或 promise。同时通过 resolve 或 reject 时传⼊参数，即可给下⼀个函数或 promise 传⼊初始值。
+已拒绝的 promise，后续可以通过 .catch ⽅法或是 .then ⽅法的第⼆个参数或是 try catch 进⾏捕获。
+
+结构梳理1234567891011121314151617class simplePromise &#123;    constructor(handleFn) &#123; // 构造时传入一个函数        this.status ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/04/03/2021/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%B8%AAJS%E6%89%8B%E5%86%99%E5%87%BD%E6%95%B0%EF%BC%88call%E3%80%81%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81%EF%BC%89/" title="一起写几个JS函数（call、防抖节流）">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech5.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一起写几个JS函数（call、防抖节流）"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/03/2021/%E8%A7%A3%E6%9E%90%E5%87%A0%E4%B8%AAJS%E6%89%8B%E5%86%99%E5%87%BD%E6%95%B0%EF%BC%88call%E3%80%81%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81%EF%BC%89/" title="一起写几个JS函数（call、防抖节流）">一起写几个JS函数（call、防抖节流）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-04-02T16:03:37.000Z" title="发表于 2021-04-03 00:03:37">2021-04-03</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">call函数先从改变this指向上简单实现一个方法添加到Function的原型链上：
+12345Function.prototype.myCall = function (content) &#123;    content.fn = this    const result = eval(`content.fn()`)    return result&#125;
+这就实现了call函数核心部分，因为使用了字符串的形式，所以函数的参数部分还需要进行特殊处理：
+1234567891011Function.prototype.myCall = function (content) &#123;    content.fn = this    /** 处理参数 */    const args = []    for (let i = 1; i &lt; arguments.length; i++) &#123;        args.push(`arguments[$&#123;i&#125;]`) // 直接push会导致强转字符串时出现:[]    &#125;    /** */ ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/03/29/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF/" title="JS面向对象编程及原型继承全面解析">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech3.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JS面向对象编程及原型继承全面解析"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/29/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF/" title="JS面向对象编程及原型继承全面解析">JS面向对象编程及原型继承全面解析</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-29T10:54:07.000Z" title="发表于 2021-03-29 18:54:07">2021-03-29</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">面向对象编程的特点
+封装：使用对象的人无需考虑内部实现，只考虑功能的使用。
+继承：为了代码的可复用。
+多态：不同对象 作用于同一操作产生不同结果。
+
+JS如何创建对象普通方式123const A = new Object()A.attribute = &#x27;&#x27; // 定义属性A.fn = function() &#123; &#125; // 定义方法
+
+工厂模式123456function Creat(attr) &#123;    // .... 同上面普通方式     return A&#125;const aa = Creat(&#x27;...&#x27;)const bb = Creat(&#x27;...&#x27;)
+存在问题：往实例化对象上层找不到父类，只能知道是一个Object
+构造函数/实例12345678910function Player(name) &#123;    this.name = name    this.run = function() &#123;        console.log(&#x27;...&#x27;);    ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/03/29/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-this%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/" title="一次搞懂前端this、闭包、作用域">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech2.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一次搞懂前端this、闭包、作用域"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/29/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-this%E3%80%81%E9%97%AD%E5%8C%85%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F/" title="一次搞懂前端this、闭包、作用域">一次搞懂前端this、闭包、作用域</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-29T10:52:25.000Z" title="发表于 2021-03-29 18:52:25">2021-03-29</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">闭包的应用
+闭包是指有权访问另外一个函数作用域中的变量的函数.可以理解为(能够读取其他函数内部变量的函数)
+
+0. 封装私有变量123456789101112131415161718192021function Person0() &#123;    this._attackVolume = 100;&#125;Person0.prototype = &#123;    /** ... **/&#125;;var p0 = new Person0(); console.log(p0._attackVolume); // 100// 工厂方法function Person1() &#123;    var _attackVolume = 100;    return &#123;        attack() &#123;            console.log(&#x27;attack &#x27; + _attackVolume);            _attackVolume++        &#125;    &#125;;&#125;var p1 = new Pe ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/03/29/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-%E6%B5%8F%E8%A7%88%E5%99%A8dom%E4%BA%8B%E4%BB%B6%E3%80%81Ajax%E3%80%81Bom/" title="浅谈浏览器Dom事件、Ajax、Bom">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech6.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="浅谈浏览器Dom事件、Ajax、Bom"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/29/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-%E6%B5%8F%E8%A7%88%E5%99%A8dom%E4%BA%8B%E4%BB%B6%E3%80%81Ajax%E3%80%81Bom/" title="浅谈浏览器Dom事件、Ajax、Bom">浅谈浏览器Dom事件、Ajax、Bom</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-29T10:49:48.000Z" title="发表于 2021-03-29 18:49:48">2021-03-29</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">0. 事件流以及事件委托机制
+假设一段DOM结构如下：
+12345&lt;ul&gt;    &lt;li&gt; 1 &lt;/li&gt;    &lt;li&gt; 2 &lt;/li&gt;    &lt;li&gt; 3 &lt;/li&gt;&lt;/ul&gt;
+js中对body注册点击事件(也可以对ul注册点击事件)
+1234567document.body.addEventListener(&#x27;click&#x27;, e =&gt; &#123;    console.log(&#x27;捕获阶段&#x27;);&#125;, true)document.body.addEventListener(&#x27;click&#x27;, e =&gt; &#123;    console.log(&#x27;冒泡阶段&#x27;);&#125;, false)
+true表示捕获阶段触发，false表示冒泡阶段触发
+如果我们为每个li赋予点击事件，会注册多个方法，但是在ul(外层父层)中只需要注册一次，利用捕获冒泡的原理，相当于每个li都能触发事件，这就是事件委 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/12/04/2020/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84JavaScript/" title="那些奇怪怪的JavaScript">     <img class="post_bg" data-lazy-src="http://img.palxp.com/default/tech1.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="那些奇怪怪的JavaScript"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/12/04/2020/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84JavaScript/" title="那些奇怪怪的JavaScript">那些奇怪怪的JavaScript</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-12-04T13:52:56.000Z" title="发表于 2020-12-04 21:52:56">2020-12-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a></span></div><div class="content">JS浮点数丢失精度问题10.3 - 0.2 !&#x3D;&#x3D; 0.1  &#x2F;&#x2F; true
+JS最大数字长度1Number x &#x3D; 9007199254740992 &#x2F;&#x2F; 即2的53次方，js数字长度最大不能超过这个数值
+
+parseInt 太小的数字会产生 bug12parseInt(0.00000000233) &#x2F;&#x2F; 2parseInt(0.00000000456) &#x2F;&#x2F; 4
+
+NaN更像是一个范围，在JS中比较特殊，它并不会等于自身12const x &#x3D; NaN;x !&#x3D;&#x3D; x  &#x2F;&#x2F; true
+
+isNaN也存在bug，ES6中对其进行了修复12isNaN(&#39;abc&#39;);       &#x2F;&#x2F; trueNumber.isNaN(&#39;abc&#39;) &#x2F;&#x2F; false
+
+null的设计问题123456789101 + null          &#x2F;&#x2F; 11  ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="http://img.palxp.com/blog/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">ShawnPhang</div><div class="author-info__description">少壮不努力，老大写程序</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">37</div></a></div><div class="card-info-data-item is-center">      <a href="/tags/"><div class="headline">标签</div><div class="length_num">9</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length_num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/palxiao"><i class="fab fa-github"></i><span>Github</span></a></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/13/2021/vue2%E9%80%9A%E4%BF%A1/" title="浅谈vue2的12种组件通信方式及理解">浅谈vue2的12种组件通信方式及理解</a><time class="aside-post_meta post-meta-date" datetime="2021-04-12T17:13:43.000Z" title="发表于 2021-04-13 01:13:43">2021-04-13</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/12/2021/%E6%8E%A2%E7%B4%A2%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86%E4%B9%8BProxy%E4%BB%A3%E7%90%86%E4%B8%8Ereflect%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%BF%E7%94%A8/" title="探索响应式数据原理，Proxy与reflect">探索响应式数据原理，Proxy与reflect</a><time class="aside-post_meta post-meta-date" datetime="2021-04-11T18:40:23.000Z" title="发表于 2021-04-12 02:40:23">2021-04-12</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAVuex%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E5%99%A8/" title="从零开始实现一个Vuex状态管理器">从零开始实现一个Vuex状态管理器</a><time class="aside-post_meta post-meta-date" datetime="2021-04-11T18:40:01.000Z" title="发表于 2021-04-12 02:40:01">2021-04-12</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/12/2021/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%9F%BA%E4%BA%8EReact%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93-%E5%90%8C%E6%9E%84/" title="从零开始基于React服务端渲染&amp;同构">从零开始基于React服务端渲染&amp;同构</a><time class="aside-post_meta post-meta-date" datetime="2021-04-11T18:39:26.000Z" title="发表于 2021-04-12 02:39:26">2021-04-12</time></div></div><div class="aside-recent-post"><div class="aside-post-info no-aside-cover"><a class="aside-post-title" href="/2021/04/04/2021/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA-Promise%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/" title="40行代码实现一个简单Promise函数">40行代码实现一个简单Promise函数</a><time class="aside-post_meta post-meta-date" datetime="2021-04-04T10:58:08.000Z" title="发表于 2021-04-04 18:58:08">2021-04-04</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">前端开发</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%82%E8%B0%88/"><span class="card-category-list-name">杂谈</span><span class="card-category-list-count">1</span></a></li>
+                       
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href='/tags/ElasticSearch/' style='font-size:16px; color:rgb(135, 187, 73)'>ElasticSearch</a><a href='/tags/JS/' style='font-size:16px; color:rgb(39, 90, 29)'>JS</a><a href='/tags/Linux/' style='font-size:19px; color:rgb(176, 50, 141)'>Linux</a><a href='/tags/NodeJs/' style='font-size:21px; color:rgb(0, 1, 47)'>NodeJs</a><a href='/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/' style='font-size:21px; color:rgb(153, 9, 162)'>个人博客</a><a href='/tags/%E5%89%8D%E7%AB%AF/' style='font-size:21px; color:rgb(183, 88, 58)'>前端</a><a href='/tags/%E5%89%8D%E7%AB%AF%E5%B7%A9%E5%9B%BA/' style='font-size:18px; color:rgb(197, 93, 45)'>前端巩固</a><a href='/tags/%E5%A4%87%E5%BF%98%E8%AE%B0%E5%BD%95/' style='font-size:21px; color:rgb(40, 97, 50)'>备忘记录</a><a href='/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/' style='font-size:18px; color:rgb(139, 24, 167)'>数据分析</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/05/"><span class="card-archive-list-date">五月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/04/"><span class="card-archive-list-date">四月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/09/"><span class="card-archive-list-date">九月 2019</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item more is-center"><a class="card-archive-list-link-more" href="/archives/">
+              <span>查看更多</span><i class="fas fa-angle-right"  ></i></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">37</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" publish_date="2017/12/04 15:28:42">     </div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By ShawnPhang</div><div class="icp"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"/><span>粤ICP备16076249号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function subtitleType () {
+  $.getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js',function () {
+    jinrishici.load(function (result) {
+      if (true) {
+        var sub = "少壮不努力，老大写程序,牛羊且成群，猛兽皆独行,前半生不要怕，后半生不要悔,与其讨论勇气，不如直面恐惧".length == 0 ? new Array() : "少壮不努力，老大写程序,牛羊且成群，猛兽皆独行,前半生不要怕，后半生不要悔,与其讨论勇气，不如直面恐惧".split(',')
+        var content = result.data.content
+        var both = sub.unshift(content)
+        var typed = new Typed('#subtitle', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 150,
+          loop: true,
+          backSpeed: 50,
+        })
+      } else {
+        document.getElementById('subtitle').innerHTML = result.data.content
+      }
+    })
+  })
+}
+
+if (true) {
+  if (typeof Typed === 'function') subtitleType()
+  else $.getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js', subtitleType)
+} else {
+  subtitleType()
+}
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks"></canvas><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="170" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script></div><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"https://cdn.jsdelivr.net/npm/live2d-widget-model-bilibili@1.0.1/assets/33/model.2017.valley.json"},"display":{"position":"right","width":162,"height":164,"vOffset":18},"mobile":{"show":true},"react":{"opacity":0.78},"log":false});</script></body></html>

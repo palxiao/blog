@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>React学习笔记 | 我的异世界</title><meta name="description" content="主要APIReact.createElement12345React.createElement(  type, &#x2F;&#x2F; 必填，元素类型，可以是html 标签字符串 &#x2F; React 组件  [props], &#x2F;&#x2F; 可选，元素属性，以对象形式展现  [...children] &#x2F;&#x2F; 可选，嵌套在元素内的子元素)    eg： 12345var rElmLi1 &#x3D; React.createElement"><meta name="keywords" content="前端"><meta name="author" content="ShawnPhang,shawnphang@163.com"><meta name="copyright" content="ShawnPhang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://blog.palxp.com/2020/04/01/2020/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="React学习笔记"><meta property="og:url" content="http://blog.palxp.com/2020/04/01/2020/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="我的异世界"><meta property="og:description" content="主要APIReact.createElement12345React.createElement(  type, &#x2F;&#x2F; 必填，元素类型，可以是html 标签字符串 &#x2F; React 组件  [props], &#x2F;&#x2F; 可选，元素属性，以对象形式展现  [...children] &#x2F;&#x2F; 可选，嵌套在元素内的子元素)    eg： 12345var rElmLi1 &#x3D; React.createElement"><meta property="og:image" content="http://img.palxp.com/default/tech2.jpeg"><meta property="article:published_time" content="2020-04-01T03:26:15.000Z"><meta property="article:modified_time" content="2021-03-30T08:19:13.873Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = '1'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 16:19:13'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="http://img.palxp.com/blog/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives//"><div class="headline">文章</div><div class="length_num">37</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags//"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories//"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81API"><span class="toc-number">1.</span> <span class="toc-text">主要API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#React-createElement"><span class="toc-number">1.1.</span> <span class="toc-text">React.createElement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ReactDOM-render"><span class="toc-number">1.2.</span> <span class="toc-text">ReactDOM.render</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">注意点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A"><span class="toc-number">3.</span> <span class="toc-text">单向数据流中的数据双向绑定</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">4.</span> <span class="toc-text">生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">4.1.</span> <span class="toc-text">初始化</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(http://img.palxp.com/default/tech2.jpeg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">我的异世界</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">React学习笔记</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-04-01T03:26:15.000Z" title="undefined 2020-04-01 11:26:15">2020-04-01</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="主要API"><a href="#主要API" class="headerlink" title="主要API"></a>主要API</h1><h2 id="React-createElement"><a href="#React-createElement" class="headerlink" title="React.createElement"></a>React.createElement</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(</span><br><span class="line">  type, <span class="comment">// 必填，元素类型，可以是html 标签字符串 / React 组件</span></span><br><span class="line">  [props], <span class="comment">// 可选，元素属性，以对象形式展现</span></span><br><span class="line">  [...children] <span class="comment">// 可选，嵌套在元素内的子元素</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>eg：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rElmLi1 = React.createElement(<span class="string">&#x27;li&#x27;</span>, &#123;<span class="attr">id</span>:<span class="string">&#x27;li1&#x27;</span>&#125;, <span class="string">&#x27;one&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> rElmLi2 = React.createElement(<span class="string">&#x27;li&#x27;</span>, &#123;<span class="attr">id</span>:<span class="string">&#x27;li2&#x27;</span>&#125;, <span class="string">&#x27;two&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> rElmLi3 = React.createElement(<span class="string">&#x27;li&#x27;</span>, &#123;<span class="attr">id</span>:<span class="string">&#x27;li3&#x27;</span>&#125;, <span class="string">&#x27;three&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reactElementUl = React.createElement(<span class="string">&#x27;ul&#x27;</span>, &#123;<span class="attr">className</span>:<span class="string">&#x27;myList&#x27;</span>&#125;, rElmLi1,rElmLi2,rElmLi3);</span><br></pre></td></tr></table></figure>
+
+<h2 id="ReactDOM-render"><a href="#ReactDOM-render" class="headerlink" title="ReactDOM.render"></a>ReactDOM.render</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(element, container, [callback])</span><br></pre></td></tr></table></figure>
+
+<p>eg: </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">element</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reactElementUl = React.createElement(...);</span><br><span class="line">    <span class="keyword">return</span> reactElementUl;</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(element(), <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><ol>
+<li>{ }表达式括号里推荐注释:/**/</li>
+<li>使用className代替class，Label标签for属性使用HtmlFor，否则报错</li>
+<li>组件名首字母必须是大写</li>
+<li>行内样式双花括号，jsx驼峰写法不能有“-”：如<code>&lt;p style=&#123;&#123; fontSize:'15px ',zIndex: 3 &#125;&#125;&gt;</code></li>
+<li>循环的key属性不能改动</li>
+</ol>
+<h1 id="单向数据流中的数据双向绑定"><a href="#单向数据流中的数据双向绑定" class="headerlink" title="单向数据流中的数据双向绑定"></a>单向数据流中的数据双向绑定</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&#x27;text&#x27;</span> value=&#123; <span class="built_in">this</span>.state.msg &#125; onChange=&#123; <span class="function">(<span class="params">e</span>) =&gt;</span> <span class="built_in">this</span>.txtChange(e) &#125;/&gt;</span><br><span class="line">txtChange = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">let</span> newVal = e.target.value</span><br><span class="line">   <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      msg: newVal</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">constructor(props)&#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 组件即将被挂载</span><br><span class="line">componentWillMount()&#123; &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 页面渲染</span><br><span class="line">render() &#123;</span><br><span class="line">        return ( ...&lt;div&gt;... )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 组件加载完成</span><br><span class="line">componentDidMount()&#123; &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 即将被修改阶段</span><br><span class="line">componentWillUpdate()&#123; &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 更新完阶段 </span><br><span class="line">componentDidUpdate()&#123; &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 卸载前</span><br><span class="line">componentWillUnmount()&#123; &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 错误处理</span><br><span class="line">componentDidCatch()&#123; &#125;</span><br></pre></td></tr></table></figure>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:shawnphang@163.com">ShawnPhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.palxp.com/2020/04/01/2020/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">http://blog.palxp.com/2020/04/01/2020/React%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.palxp.com" target="_blank">我的异世界</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"><div class="social-share" data-image="http://img.palxp.com/default/tech2.jpeg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/05/09/2020/%E5%85%B3%E4%BA%8Evue2%E7%9A%8412%E7%A7%8D%E7%BB%84%E4%BB%B6%E9%80%9A%E8%AE%AF%E6%96%B9%E5%BC%8F/"><img class="prev-cover" data-lazy-src="http://img.palxp.com/default/tech7.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">关于vue2的12种组件通讯方式</div></div></a></div><div class="next-post pull-right"><a href="/2019/09/30/old/linux%E5%AE%89%E8%A3%85Nginx%E8%BF%87%E7%A8%8B%E5%B0%8F%E8%AE%B0/"><img class="next-cover" data-lazy-src="http://img.palxp.com/default/tech4.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">linux安装Nginx过程小记</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/11/29/2020/Jenkins自动化前后端项目部署/" title="Jenkins自动化前后端项目部署记录以及一些坑"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/2020/11/1606645225525.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="relatedPosts_title">Jenkins自动化前后端项目部署记录以及一些坑</div></div></a></div><div class="relatedPosts_item"><a href="/2020/11/29/2020/与UI设计师对线的前端技巧，Gradient剪卡风格/" title="与UI对线的前端技巧之Gradient剪卡风格"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech2.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="relatedPosts_title">与UI对线的前端技巧之Gradient剪卡风格</div></div></a></div><div class="relatedPosts_item"><a href="/2020/12/04/2020/奇奇怪怪的JavaScript/" title="那些奇怪怪的JavaScript"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech1.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-04</div><div class="relatedPosts_title">那些奇怪怪的JavaScript</div></div></a></div><div class="relatedPosts_item"><a href="/2020/11/29/2020/总会用到的前端小姿势——CSS篇.md/" title="总会用到前端姿势-CSS篇"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech1.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="relatedPosts_title">总会用到前端姿势-CSS篇</div></div></a></div><div class="relatedPosts_item"><a href="/2021/04/13/2021/vue2通信/" title="浅谈vue2的12种组件通信方式及理解"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech9.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-13</div><div class="relatedPosts_title">浅谈vue2的12种组件通信方式及理解</div></div></a></div><div class="relatedPosts_item"><a href="/2021/04/12/2021/从零开始基于React服务端渲染-同构/" title="从零开始基于React服务端渲染&同构"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech8.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-12</div><div class="relatedPosts_title">从零开始基于React服务端渲染&同构</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By ShawnPhang</div><div class="icp"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"/><span>粤ICP备16076249号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function loadUtterances () {
+  let ele = document.createElement('script')
+  ele.setAttribute('id', 'utterances_comment')
+  ele.setAttribute('src', 'https://utteranc.es/client.js')
+  ele.setAttribute('repo', 'palxiao/palxiao.github.io')
+  ele.setAttribute('issue-term', 'pathname')
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+  ele.setAttribute('theme', nowTheme)
+  ele.setAttribute('crossorigin', 'anonymous')
+  ele.setAttribute('async', 'true')
+  document.getElementById('utterances-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function utterancesTheme () {
+  if (document.querySelector('.utterances-frame')) {
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+    const message = {
+      type: 'set-theme',
+      theme: theme
+    };
+    const iframe = document.querySelector('.utterances-frame');
+    iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+}
+
+if ('Utterances' === 'Utterances' || !false) {
+  if (false) loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+  else loadUtterances()
+} else {
+  function loadOtherComment () {
+    loadUtterances()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks"></canvas><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="170" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script></div><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"https://cdn.jsdelivr.net/npm/live2d-widget-model-bilibili@1.0.1/assets/33/model.2017.valley.json"},"display":{"position":"right","width":162,"height":164,"vOffset":18},"mobile":{"show":true},"react":{"opacity":0.78},"log":false});</script></body></html>

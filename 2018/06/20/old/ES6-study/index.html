@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>人生苦短，ES6我只想现在就了解他 | 我的异世界</title><meta name="description" content="从零开始的 ECMAScript 6 不完全攻略，轻扫盲向     0. 块级作用域 let变量在不同块级作用域中不影响：  1234for (let i &#x3D; 1; i &lt; 3; i++) &amp;#123;  console.log(i);&amp;#125;console.log(i); &#x2F;&#x2F; 此行将报错: ReferenceError 未定义   重复声明变量会导致无法"><meta name="keywords" content="前端,JS"><meta name="author" content="ShawnPhang,shawnphang@163.com"><meta name="copyright" content="ShawnPhang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://blog.palxp.com/2018/06/20/old/ES6-study/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="人生苦短，ES6我只想现在就了解他"><meta property="og:url" content="http://blog.palxp.com/2018/06/20/old/ES6-study/"><meta property="og:site_name" content="我的异世界"><meta property="og:description" content="从零开始的 ECMAScript 6 不完全攻略，轻扫盲向     0. 块级作用域 let变量在不同块级作用域中不影响：  1234for (let i &#x3D; 1; i &lt; 3; i++) &amp;#123;  console.log(i);&amp;#125;console.log(i); &#x2F;&#x2F; 此行将报错: ReferenceError 未定义   重复声明变量会导致无法"><meta property="og:image" content="http://img.palxp.com/blog/ECMAScript6.png"><meta property="article:published_time" content="2018-06-20T10:05:09.000Z"><meta property="article:modified_time" content="2021-03-30T08:19:13.877Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = '1'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.0.2',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2021-03-30 16:19:13'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 5.0.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="http://img.palxp.com/blog/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives//"><div class="headline">文章</div><div class="length_num">37</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags//"><div class="headline">标签</div><div class="length_num">9</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories//"><div class="headline">分类</div><div class="length_num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.</span> <span class="toc-text">0. 块级作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="toc-number">2.</span> <span class="toc-text">1. 数组扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="toc-number">3.</span> <span class="toc-text">2. 对象扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="toc-number">4.</span> <span class="toc-text">3. 函数扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%95%B0%E7%BB%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">5.</span> <span class="toc-text">4. 数组解构赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">6.</span> <span class="toc-text">5. 对象解构赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%96%B0%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-symbol"><span class="toc-number">7.</span> <span class="toc-text">6. 新数据类型 symbol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84set%E4%B8%8Emap"><span class="toc-number">8.</span> <span class="toc-text">7. 数据结构set与map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%AF%B9%E8%B1%A1%E4%BB%A3%E7%90%86%E4%B8%80"><span class="toc-number">9.</span> <span class="toc-text">8. 对象代理一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E7%B1%BB%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">10.</span> <span class="toc-text">9. 类的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Promise"><span class="toc-number">11.</span> <span class="toc-text">10. Promise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-number">12.</span> <span class="toc-text">11. 模块化</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(http://img.palxp.com/blog/ECMAScript6.png)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">我的异世界</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 归档</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="http://m.palxp.com"><i class="fa-fw fas fa-images"></i><span> 我的图库</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">人生苦短，ES6我只想现在就了解他</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2018-06-20T10:05:09.000Z" title="undefined 2018-06-20 18:05:09">2018-06-20</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>从零开始的 ECMAScript 6 不完全攻略，轻扫盲向</p>
+<!-- ![](http://img.palxp.com/blog/ECMAScript6.png) -->
+
+<a id="more"></a>
+
+<h3 id="0-块级作用域"><a href="#0-块级作用域" class="headerlink" title="0. 块级作用域"></a>0. 块级作用域</h3><blockquote>
+<p>let变量在不同块级作用域中不影响：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (let i &#x3D; 1; i &lt; 3; i++) &#123;</span><br><span class="line">  console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(i); &#x2F;&#x2F; 此行将报错: ReferenceError 未定义</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>重复声明变量会导致无法编译：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let a &#x3D; 1;</span><br><span class="line">let a &#x3D; 2; &#x2F;&#x2F; 此行将报错</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一次声明后无法再次赋值的const类型：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const PI &#x3D; 3.1415926; &#x2F;&#x2F; 必须在声明时就立刻赋值</span><br><span class="line">PI &#x3D; 2; &#x2F;&#x2F; 此行将报错，const类型值不可改变</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>const声明并非不可修改，而是不可重新赋值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const k &#x3D; [] &#x2F;&#x2F; 引用类型依然可以修改</span><br><span class="line">k.b &#x3D; 1;</span><br><span class="line">k.a &#x3D; 2;</span><br><span class="line">console.log(k); &#x2F;&#x2F; 输出[b: 1, a: 2]</span><br><span class="line">k&#x3D;[]; &#x2F;&#x2F; 此行将报错，const声明的变量不可重新赋值</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-数组扩展"><a href="#1-数组扩展" class="headerlink" title="1. 数组扩展"></a>1. 数组扩展</h3><blockquote>
+<p>将一串字符转换为数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr &#x3D; Array.of(3,4,7,9,11);</span><br><span class="line">console.log(arr); &#x2F;&#x2F; [3, 4, 7, 9, 11]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>将其他对象转换为数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let set1 &#x3D; new Set();</span><br><span class="line">set1.add(1).add(2).add(3)</span><br><span class="line">console.log(Array.from(set1)) &#x2F;&#x2F; [1,2,3] map array一样同理</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>数组加工</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let t &#x3D; Array.from([1,3,5], (i) &#x3D;&gt; i*2)</span><br><span class="line">console.log(t);&#x2F;&#x2F; 输出 [2,6,10]</span><br><span class="line">    </span><br><span class="line">let t &#x3D; Array.from([1,2,3], function(i)&#123;return i+1&#125;)</span><br><span class="line">console.log(t);&#x2F;&#x2F; 输出 [2,3,4]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>数组遍历 entries()、keys()、values()</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">for (let index of [&#39;a&#39;, &#39;b&#39;].keys()) &#123;</span><br><span class="line">    console.log(index);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 0</span><br><span class="line">&#x2F;&#x2F; 1</span><br><span class="line">for (let elem of [&#39;a&#39;, &#39;b&#39;].values()) &#123;</span><br><span class="line">    console.log(elem);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; &#39;a&#39;</span><br><span class="line">&#x2F;&#x2F; &#39;b&#39;</span><br><span class="line">for (let [index, elem] of [&#39;a&#39;, &#39;b&#39;].entries()) &#123;</span><br><span class="line">    console.log(index, elem);</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 0 &quot;a&quot;</span><br><span class="line">&#x2F;&#x2F; 1 &quot;b&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-对象扩展"><a href="#2-对象扩展" class="headerlink" title="2. 对象扩展"></a>2. 对象扩展</h3><blockquote>
+<p>ES5 与 ES6 中写法对比</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let a &#x3D; 1;</span><br><span class="line">let b &#x3D; 2;</span><br><span class="line">    </span><br><span class="line">let es5 &#x3D; &#123;</span><br><span class="line">    a:a,</span><br><span class="line">    b:b</span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line">let es6 &#x3D; &#123;</span><br><span class="line">    a,</span><br><span class="line">    b</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>数组方法表示更简明</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let es5_method &#x3D; &#123;</span><br><span class="line">    hello: function() &#123;</span><br><span class="line">      console.log(&#39;hello&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">  </span><br><span class="line">let es6_method &#x3D; &#123;</span><br><span class="line">    hello() &#123;</span><br><span class="line">      console.log(&#39;hello&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>属性表达式 可以在对象中使用变量定义，这在ES5以前不行</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a &#x3D; &#39;b&#39;;</span><br><span class="line">let obj &#x3D; &#123; [a]: 1 &#125;;</span><br><span class="line">console.log(obj); &#x2F;&#x2F; &#123; b: 1&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>新增API</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#39;字符串&#39;,Object.is(&#39;abc&#39;,&#39;abc&#39;),&#39;abc&#39;&#x3D;&#x3D;&#x3D;&#39;abc&#39;);</span><br><span class="line">console.log(&#39;数组&#39;,Object.is([],[]),[]&#x3D;&#x3D;&#x3D;[]);</span><br><span class="line">console.log(&#39;拷贝&#39;,Object.assign(&#123;a:&#39;a&#39;&#125;,&#123;b:&#39;b&#39;&#125;));</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-函数扩展"><a href="#3-函数扩展" class="headerlink" title="3. 函数扩展"></a>3. 函数扩展</h3><blockquote>
+<p>参数默认值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function test(x, y &#x3D; &#39;world&#39;)&#123;</span><br><span class="line">    console.log(&#39;默认值&#39;,x,y);</span><br><span class="line">&#125;</span><br><span class="line">test(&#39;hello&#39;); &#x2F;&#x2F; &#39;hello world&#39;</span><br><span class="line">test(&#39;hello&#39;,&#39;you&#39;); &#x2F;&#x2F; &#39;hello you&#39;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以使用数组形式接收若干参数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function test(...arg)&#123;</span><br><span class="line">    for(let one of arg)&#123;</span><br><span class="line">      console.log(one);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>箭头函数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arrow &#x3D; a &#x3D;&gt; a*2; &#x2F;&#x2F; 带参数</span><br><span class="line">let arrow2 &#x3D; () &#x3D;&gt; 5; &#x2F;&#x2F; 无参</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>尾调用 可解决递归带来的资源消耗</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function tail(x)&#123;</span><br><span class="line">    console.log(&#39;tail&#39;,x);</span><br><span class="line">&#125;</span><br><span class="line">function fx(x)&#123;</span><br><span class="line">    return tail(x)</span><br><span class="line">&#125;</span><br><span class="line">fx(123)</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-数组解构赋值"><a href="#4-数组解构赋值" class="headerlink" title="4. 数组解构赋值"></a>4. 数组解构赋值</h3><blockquote>
+<p>变量交换将不再需要中间变量</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a &#x3D; 1;</span><br><span class="line">let b &#x3D; 2;</span><br><span class="line">[a,b] &#x3D; [b,a];</span><br><span class="line">console.log(a,b); &#x2F;&#x2F; a&#x3D;2 b&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>更直观的变量赋值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a,b;</span><br><span class="line">[a,b] &#x3D; [1,2];</span><br><span class="line">console.log(a,b); &#x2F;&#x2F; a&#x3D;1, b&#x3D;2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以选择性接收参数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a,b;</span><br><span class="line">[a,,,b] &#x3D; [1,2,3,4,5];</span><br><span class="line">console.log(a,b); &#x2F;&#x2F; a&#x3D;1, b&#x3D;4</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也可以是数组</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let a,b;</span><br><span class="line">[a,,...b] &#x3D; [1,2,3,4,5]; &#x2F;&#x2F; 注意这里 ... 的作用</span><br><span class="line">console.log(a,b); &#x2F;&#x2F; a&#x3D;1, b&#x3D;[3,4,5]</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-对象解构赋值"><a href="#5-对象解构赋值" class="headerlink" title="5. 对象解构赋值"></a>5. 对象解构赋值</h3><blockquote>
+<p>按key value匹配</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let o &#x3D; &#123;q:42,p:true,c:99&#125;;</span><br><span class="line">let &#123;p&#x3D;false,q,k&#x3D;0,c&#125; &#x3D; o;</span><br><span class="line">console.log(p,q,k,c);</span><br><span class="line"></span><br><span class="line">let &#123;a&#x3D;10,b&#x3D;5&#125;&#x3D;&#123;a:3&#125;;</span><br><span class="line">console.log(a,b);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用场景模拟</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let metaData&#x3D;&#123;</span><br><span class="line">    title:&#39;abc&#39;,</span><br><span class="line">    test:[&#123;</span><br><span class="line">      title:&#39;test&#39;,</span><br><span class="line">      desc:&#39;description&#39;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line">let &#123;title:esTitle,test:[&#123;title:cnTitle&#125;]&#125;&#x3D;metaData;</span><br><span class="line">console.log(esTitle,cnTitle); &#x2F;&#x2F; abc test</span><br><span class="line">&#x2F;&#x2F; let &#123;title,test&#125; &#x3D; metaData;</span><br><span class="line">&#x2F;&#x2F; console.log(title,test[0].title);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-新数据类型-symbol"><a href="#6-新数据类型-symbol" class="headerlink" title="6. 新数据类型 symbol"></a>6. 新数据类型 symbol</h3><blockquote>
+<p>具有唯一性</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let a1 &#x3D; Symbol();</span><br><span class="line">let a2 &#x3D; Symbol();</span><br><span class="line">console.log(a1&#x3D;&#x3D;&#x3D;a2); &#x2F;&#x2F; false</span><br><span class="line">let a3 &#x3D; Symbol.for(&#39;a3&#39;);&#x2F;&#x2F;寻找a3，找不到，创建</span><br><span class="line">let a4 &#x3D; Symbol.for(&#39;a3&#39;);&#x2F;&#x2F;寻找a3，找到，赋值</span><br><span class="line">console.log(a3&#x3D;&#x3D;&#x3D;a4); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用场景模拟</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let a1 &#x3D; Symbol.for(&#39;abc&#39;);</span><br><span class="line">let obj &#x3D; &#123;</span><br><span class="line">    [a1]:&#39;123&#39;,</span><br><span class="line">    &#39;abc&#39;:345,</span><br><span class="line">    &#39;c&#39;:456</span><br><span class="line">&#125;;</span><br><span class="line">console.log(obj);&#x2F;&#x2F;&#123;abc: 345, c: 456, Symbol(abc): &quot;123&quot;&#125;</span><br><span class="line">    </span><br><span class="line">for(let [key,value] of Object.entries(obj))&#123;</span><br><span class="line">    console.log(&#39;let of&#39;,key,value);</span><br><span class="line">    &#x2F;&#x2F; let of abc 345</span><br><span class="line">    &#x2F;&#x2F; let of c 456</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">Object.getOwnPropertySymbols(obj).forEach(function(item)&#123;</span><br><span class="line">    console.log(obj[item]); &#x2F;&#x2F; 123</span><br><span class="line">&#125;)</span><br><span class="line">    </span><br><span class="line">Reflect.ownKeys(obj).forEach(function(item)&#123;</span><br><span class="line">    console.log(&#39;ownkeys&#39;,item,obj[item]);</span><br><span class="line">    &#x2F;&#x2F; ownkeys abc 345</span><br><span class="line">    &#x2F;&#x2F; ownkeys c 456</span><br><span class="line">    &#x2F;&#x2F; ownkeys Symbol(abc) 123</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-数据结构set与map"><a href="#7-数据结构set与map" class="headerlink" title="7. 数据结构set与map"></a>7. 数据结构set与map</h3><blockquote>
+<p>set的元素唯一特性(可做数组去重)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr &#x3D; [1,1,1,4,5];</span><br><span class="line">let list &#x3D; new Set(arr);</span><br><span class="line">console.log(list.size); &#x2F;&#x2F; 3</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>set中比较是使用严等于，数据类型不转换</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr &#x3D; [1,2,3,1,&#39;2&#39;];</span><br><span class="line">let list2 &#x3D; new Set(arr);</span><br><span class="line">console.log(list2); &#x2F;&#x2F; &#123;1, 2, 3, &quot;2&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>通过增删改查来比较 Map Set Array Object</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">let map &#x3D; new Map();</span><br><span class="line">let set &#x3D; new Set();</span><br><span class="line">let arr &#x3D; [];</span><br><span class="line">let obj &#x3D; &#123;&#125;;</span><br><span class="line">let temp &#x3D; &#123;a:1&#125;;</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F; 增</span><br><span class="line">map.set(&#39;a&#39;,1);</span><br><span class="line">    </span><br><span class="line">set.add(temp);</span><br><span class="line">    </span><br><span class="line">arr.push(&#123;a:1&#125;);</span><br><span class="line">    </span><br><span class="line">obj.a&#x3D;1; &#x2F;&#x2F; obj[&#39;a&#39;]&#x3D;1;</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F; 删</span><br><span class="line">    </span><br><span class="line">map.delete(&#39;a&#39;);</span><br><span class="line">    </span><br><span class="line">set.forEach(item &#x3D;&gt; item.a ? delete(item.a) : null);&#x2F;&#x2F; set.delet(temp)</span><br><span class="line">    </span><br><span class="line">let index &#x3D; arr.findIndex(item &#x3D;&gt; item.a);</span><br><span class="line">arr.splice(index, 1);</span><br><span class="line">    </span><br><span class="line">delete obj.a;&#x2F;&#x2F; delete obj[&#39;a&#39;]</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F; 改</span><br><span class="line">    </span><br><span class="line">map.set(&#39;a&#39;,2);</span><br><span class="line">    </span><br><span class="line">set.forEach(item &#x3D;&gt; item.a ? item.a&#x3D;2 : null);&#x2F;&#x2F; temp.a &#x3D; 2;</span><br><span class="line">    </span><br><span class="line">arr.forEach(item &#x3D;&gt; item.a ? item.a&#x3D;2 : null);</span><br><span class="line">    </span><br><span class="line">obj.a &#x3D; 2;&#x2F;&#x2F; obj[&#39;a&#39;]&#x3D;2;</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F; 查</span><br><span class="line">let map_exist &#x3D; map.has(&#39;a&#39;);</span><br><span class="line"></span><br><span class="line">let set_exist &#x3D; set.has(&#123;a:1&#125;);&#x2F;&#x2F;false</span><br><span class="line">let set_exist1 &#x3D; set.has(temp);&#x2F;&#x2F;true</span><br><span class="line"></span><br><span class="line">let arr_exist &#x3D; arr.find(item &#x3D;&gt; item.a);</span><br><span class="line"></span><br><span class="line">let obj_exist &#x3D; &#39;a&#39; in obj;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-对象代理一"><a href="#8-对象代理一" class="headerlink" title="8. 对象代理一"></a>8. 对象代理一</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj&#x3D;&#123;</span><br><span class="line">    time:&#39;2018-06-18&#39;,</span><br><span class="line">    name:&#39;old&#39;</span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line">console.log(Reflect.get(obj,&#39;time&#39;));&#x2F;&#x2F; 2018-06-18</span><br><span class="line">Reflect.set(obj,&#39;name&#39;,&#39;new&#39;);</span><br><span class="line">Reflect.deleteProperty(obj, &#39;time&#39;);</span><br><span class="line">console.log(obj);&#x2F;&#x2F; &#123;name: &quot;new&quot;&#125;</span><br><span class="line">console.log(Reflect.has(obj,&#39;name&#39;));&#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-类的实现"><a href="#9-类的实现" class="headerlink" title="9. 类的实现"></a>9. 类的实现</h3><blockquote>
+<p>父类生成</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Parent&#123;</span><br><span class="line">    &#x2F;&#x2F; 构造函数</span><br><span class="line">    constructor(name&#x3D;&#39;fa&#39;)&#123;</span><br><span class="line">      this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 实例化</span><br><span class="line">let a &#x3D; new Parent();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>子类继承</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Child extends Parent&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">let b &#x3D; new Child();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>继承传递参数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Child extends Parent&#123;</span><br><span class="line">    constructor(name2&#x3D;&#39;child&#39;)&#123;</span><br><span class="line">      super(name2); &#x2F;&#x2F; 相当于向父类构造函数传参，需写在最前</span><br><span class="line">      this.type &#x3D; &#39;child&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">let c &#x3D; new Child(&#39;new&#39;);</span><br><span class="line">console.log(c); &#x2F;&#x2F; &#123;name: &quot;new&quot;, type: &quot;child&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Getter Setter</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Parent&#123;</span><br><span class="line">    constructor(name&#x3D;&#39;js&#39;)&#123;</span><br><span class="line">      this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    get longName()&#123;</span><br><span class="line">      return &#39;get:&#39;+this.name</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    set longName(value)&#123;</span><br><span class="line">      this.name&#x3D;value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">let v &#x3D; new Parent();</span><br><span class="line">console.log(&#39;getter&#39;,v.longName); &#x2F;&#x2F; getter get:js</span><br><span class="line">    </span><br><span class="line">v.longName&#x3D;&#39;javascript&#39;;</span><br><span class="line">console.log(&#39;setter&#39;,v.longName); &#x2F;&#x2F; setter get:javascript</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>静态方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Parent&#123;</span><br><span class="line">    static say()&#123;</span><br><span class="line">      console.log(&#39;hello world&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">Parent.tell(); &#x2F;&#x2F; hello world</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>静态属性</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Parent&#123;    </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">Parent.type&#x3D;&#39;test&#39;;</span><br><span class="line">    </span><br><span class="line">console.log(Parent.type); &#x2F;&#x2F; test</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-Promise"><a href="#10-Promise" class="headerlink" title="10. Promise"></a>10. Promise</h3><blockquote>
+<p>一个模拟的回调函数案例</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">let callback &#x3D; (code) &#x3D;&gt; &#123;</span><br><span class="line">    console.log(&#39;开始运行&#39;);</span><br><span class="line">    return new Promise( (resolve,reject) &#x3D;&gt; &#123;</span><br><span class="line">        setTimeout(function () &#123;</span><br><span class="line">            if (code &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">                resolve(&#39;正常运行&#39;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                reject(&#39;参数错误&#39;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, 1000);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let test &#x3D; 0;</span><br><span class="line"></span><br><span class="line">callback(test)</span><br><span class="line">    .then(( msg ) &#x3D;&gt; &#123;</span><br><span class="line">        console.log( msg );</span><br><span class="line">        return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">            setTimeout(function () &#123;</span><br><span class="line">                resolve(&#39;继续执行&#39;);</span><br><span class="line">            &#125;, 1500);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(( msg ) &#x3D;&gt; &#123;</span><br><span class="line">        console.log( msg );</span><br><span class="line">        console.log(&#39;全部执行完毕&#39;);</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((e) &#x3D;&gt; &#123;</span><br><span class="line">        console.log(e);</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">&#x2F;&#x2F; 假设 test &#x3D; 0 时控制台输出：</span><br><span class="line">&#x2F;&#x2F; 开始运行</span><br><span class="line">&#x2F;&#x2F; 正常运行 (1s后)</span><br><span class="line">&#x2F;&#x2F; 继续执行 (1.5s后)</span><br><span class="line">&#x2F;&#x2F; 全部执行完毕 (1.5s后)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 假设 test &#x3D; 1 时控制台输出：</span><br><span class="line">&#x2F;&#x2F; 开始运行</span><br><span class="line">&#x2F;&#x2F; 参数错误 (1s后)</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-模块化"><a href="#11-模块化" class="headerlink" title="11. 模块化"></a>11. 模块化</h3><blockquote>
+<p>a.js中导出</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let CL &#x3D; &#39;R&#39;;</span><br><span class="line">let fn &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  console.log(&#39;a function&#39;);</span><br><span class="line">&#125;</span><br><span class="line">class Test&#123;</span><br><span class="line">  test()&#123;</span><br><span class="line">    console.log(&#39;a class&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  CL,</span><br><span class="line">  Test,</span><br><span class="line">  fn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>b.js中引入</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import all from &#39;.&#x2F;b.js&#39;;</span><br><span class="line"></span><br><span class="line">console.log(all.CL); &#x2F;&#x2F; R</span><br><span class="line"></span><br><span class="line">all.fn(); &#x2F;&#x2F; a function</span><br><span class="line"></span><br><span class="line">let t1 &#x3D; new all.Test();</span><br><span class="line">t1.test(); &#x2F;&#x2F; a class</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:shawnphang@163.com">ShawnPhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.palxp.com/2018/06/20/old/ES6-study/">http://blog.palxp.com/2018/06/20/old/ES6-study/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.palxp.com" target="_blank">我的异世界</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/JS/">JS</a></div><div class="post_share"><div class="social-share" data-image="http://img.palxp.com/blog/ECMAScript6.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018/07/08/old/see-javascript/"><img class="prev-cover" data-lazy-src="http://img.palxp.com/jsHeat.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaScript波澜起伏的一生</div></div></a></div><div class="next-post pull-right"><a href="/2018/05/16/old/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%8F%91%E5%B8%83npm%E6%A8%A1%E5%9D%97%E8%BF%87%E7%A8%8B/"><img class="next-cover" data-lazy-src="http://img.palxp.com/default/tech3.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">记一次将js模块发布到npm包过程</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2018/07/08/old/see-javascript/" title="JavaScript波澜起伏的一生"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/jsHeat.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2018-07-08</div><div class="relatedPosts_title">JavaScript波澜起伏的一生</div></div></a></div><div class="relatedPosts_item"><a href="/2019/03/14/old/移动端(ios)日期显示错误问题/" title="移动端(ios)日期显示错误问题"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech2.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2019-03-14</div><div class="relatedPosts_title">移动端(ios)日期显示错误问题</div></div></a></div><div class="relatedPosts_item"><a href="/2020/11/29/2020/Jenkins自动化前后端项目部署/" title="Jenkins自动化前后端项目部署记录以及一些坑"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/2020/11/1606645225525.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="relatedPosts_title">Jenkins自动化前后端项目部署记录以及一些坑</div></div></a></div><div class="relatedPosts_item"><a href="/2020/04/01/2020/React学习笔记/" title="React学习笔记"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech2.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-04-01</div><div class="relatedPosts_title">React学习笔记</div></div></a></div><div class="relatedPosts_item"><a href="/2020/11/29/2020/与UI设计师对线的前端技巧，Gradient剪卡风格/" title="与UI对线的前端技巧之Gradient剪卡风格"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech2.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-11-29</div><div class="relatedPosts_title">与UI对线的前端技巧之Gradient剪卡风格</div></div></a></div><div class="relatedPosts_item"><a href="/2020/12/04/2020/奇奇怪怪的JavaScript/" title="那些奇怪怪的JavaScript"><img class="relatedPosts_cover" data-lazy-src="http://img.palxp.com/default/tech1.jpeg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-04</div><div class="relatedPosts_title">那些奇怪怪的JavaScript</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="utterances-wrap"></div></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By ShawnPhang</div><div class="icp"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><img class="icp-icon" src="/img/icp.png"/><span>粤ICP备16076249号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script>function loadUtterances () {
+  let ele = document.createElement('script')
+  ele.setAttribute('id', 'utterances_comment')
+  ele.setAttribute('src', 'https://utteranc.es/client.js')
+  ele.setAttribute('repo', 'palxiao/palxiao.github.io')
+  ele.setAttribute('issue-term', 'pathname')
+  let nowTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+  ele.setAttribute('theme', nowTheme)
+  ele.setAttribute('crossorigin', 'anonymous')
+  ele.setAttribute('async', 'true')
+  document.getElementById('utterances-wrap').insertAdjacentElement('afterbegin',ele)
+}
+
+function utterancesTheme () {
+  if (document.querySelector('.utterances-frame')) {
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'photon-dark' : 'github-light'
+    const message = {
+      type: 'set-theme',
+      theme: theme
+    };
+    const iframe = document.querySelector('.utterances-frame');
+    iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+}
+
+if ('Utterances' === 'Utterances' || !false) {
+  if (false) loadComment(document.getElementById('utterances-wrap'), loadUtterances)
+  else loadUtterances()
+} else {
+  function loadOtherComment () {
+    loadUtterances()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><canvas class="fireworks"></canvas><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script defer="defer" id="ribbon" src="/js/third-party/canvas-ribbon.js" size="170" alpha="0.6" zIndex="-1" mobile="false" data-click="true"></script></div><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"https://cdn.jsdelivr.net/npm/live2d-widget-model-bilibili@1.0.1/assets/33/model.2017.valley.json"},"display":{"position":"right","width":162,"height":164,"vOffset":18},"mobile":{"show":true},"react":{"opacity":0.78},"log":false});</script></body></html>
